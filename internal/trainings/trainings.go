@@ -27,7 +27,7 @@ func (t *Training) Parse(datastring string) (err error) {
 	if err != nil {
 		return err
 	}
-	if steps < 0 {
+	if steps <= 0 {
 		return fmt.Errorf("Количество шагов не может быть отрицательным")
 	}
 	t.Steps = steps
@@ -36,7 +36,7 @@ func (t *Training) Parse(datastring string) (err error) {
 	if err != nil {
 		return err
 	}
-	if time < 0 {
+	if time <= 0 {
 		return fmt.Errorf("Время не может быть отрицательным")
 	}
 	t.Duration = time

@@ -14,19 +14,19 @@ const (
 )
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	if steps < 0 {
+	if steps <= 0 {
 		return 0, fmt.Errorf("Количество шагов должно быть больше нуля")
 	}
 	// проверяем что вес пользователя не меньше 0
-	if weight < 0 {
+	if weight <= 0 {
 		return 0, fmt.Errorf("Вес не может быть отрицательным")
 	}
 	// проверяем что рост пользователяя не меньше 0
-	if height < 0 {
+	if height <= 0 {
 		return 0, fmt.Errorf("Рост не может быть отрицательным")
 	}
 	// проверяем что время не отрицательное
-	if duration < 0 {
+	if duration <= 0 {
 		return 0, fmt.Errorf("Время не может быть отрицательным")
 	}
 	// mnSpeed - средняя скорость
@@ -39,19 +39,19 @@ func WalkingSpentCalories(steps int, weight, height float64, duration time.Durat
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
 	// проверяем что кол-во шагов не меньше 0
-	if steps < 0 {
+	if steps <= 0 {
 		return 0, fmt.Errorf("Количество шагов должно быть больше нуля")
 	}
 	// проверяем что вес пользователя не меньше 0
-	if weight < 0 {
+	if weight <= 0 {
 		return 0, fmt.Errorf("Вес не может быть отрицательным")
 	}
 	// проверяем что рост пользователяя не меньше 0
-	if height < 0 {
+	if height <= 0 {
 		return 0, fmt.Errorf("Рост не может быть отрицательным")
 	}
 	// проверяем что время не отрицательное
-	if duration < 0 {
+	if duration <= 0 {
 		return 0, fmt.Errorf("Время не может быть отрицательным")
 	}
 	// mnSpeed - средняя скорость
