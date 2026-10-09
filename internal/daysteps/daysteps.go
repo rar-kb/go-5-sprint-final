@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rar-kb/go-5-sprint-final/internal/personaldata"
-	"github.com/rar-kb/go-5-sprint-final/internal/spentenergy"
+	"github.com/Yandex-Practicum/tracker/internal/personaldata"
+	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
 
 type DaySteps struct {
