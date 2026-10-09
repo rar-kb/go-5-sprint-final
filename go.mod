@@ -1,4 +1,4 @@
-module github.com/rar-kb/go-5-sprint-final
+module github.com/Yandex-Practicum/tracker
 
 go 1.24.1
 
