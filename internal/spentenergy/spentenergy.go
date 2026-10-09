@@ -1,6 +1,7 @@
 package spentenergy
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -13,17 +14,78 @@ const (
 )
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	// TODO: реализовать функцию
+	if steps <= 0 {
+		return 0, fmt.Errorf("количество шагов должно быть больше нуля")
+	}
+	// проверяем что вес пользователя не меньше 0
+	if weight <= 0 {
+		return 0, fmt.Errorf("вес не может быть отрицательным")
+	}
+	// проверяем что рост пользователяя не меньше 0
+	if height <= 0 {
+		return 0, fmt.Errorf("рост не может быть отрицательным")
+	}
+	// проверяем что время не отрицательное
+	if duration <= 0 {
+		return 0, fmt.Errorf("время не может быть отрицательным")
+	}
+	// mnSpeed - средняя скорость
+	mnSpeed := MeanSpeed(steps, height, duration)
+	// durationMinutes - время в минутах
+	durationMinutes := duration.Minutes()
+	result := ((weight * mnSpeed * durationMinutes) / minInH) * walkingCaloriesCoefficient
+	return result, nil
 }
 
 func RunningSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
-	// TODO: реализовать функцию
+	// проверяем что кол-во шагов не меньше 0
+	if steps <= 0 {
+		return 0, fmt.Errorf("количество шагов должно быть больше нуля")
+	}
+	// проверяем что вес пользователя не меньше 0
+	if weight <= 0 {
+		return 0, fmt.Errorf("вес не может быть отрицательным")
+	}
+	// проверяем что рост пользователяя не меньше 0
+	if height <= 0 {
+		return 0, fmt.Errorf("рост не может быть отрицательным")
+	}
+	// проверяем что время не отрицательное
+	if duration <= 0 {
+		return 0, fmt.Errorf("время не может быть отрицательным")
+	}
+	// mnSpeed - средняя скорость
+	mnSpeed := MeanSpeed(steps, height, duration)
+	// durationMinutes - время в минутах
+	durationMinutes := duration.Minutes()
+	// считаем результат
+	result := (weight * mnSpeed * durationMinutes) / minInH
+	return result, nil
 }
 
 func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
-	// TODO: реализовать функцию
+	// проверка что кол-во шагов не отрицательно
+	if steps < 0 {
+		return 0
+	}
+	// проверка что время не отрицательное
+	if duration <= 0 {
+		return 0
+	}
+	// Dist - пройденная дистанция
+	dist := Distance(steps, height)
+	// возвращаем среднюю скорость
+	return dist / duration.Hours()
 }
 
 func Distance(steps int, height float64) float64 {
-	// TODO: реализовать функцию
+	if steps < 0 {
+		return 0
+	}
+	if height < 0 {
+		return 0
+	}
+	// lenSh - длина шага
+	lenSh := height * stepLengthCoefficient
+	return ((float64(steps) * lenSh) / mInKm)
 }
